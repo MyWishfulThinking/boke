@@ -1,0 +1,47 @@
+文章字段:
+_id  主键、标识
+sort 分类
+title 大标题
+author 作者
+date 日期
+content 内容
+intro 简介
+comment 评论
+
+comment字段：
+_id 
+fid
+content
+author
+date
+state [0:'正在等待审核', 1:'已通过',2:'未通过']
+
+
+清除cookie
+document.cookie=document.cookie.match(/[^ =;]+(?=\=)/g)[0]+'=0;expires=' + new Date( 0).toUTCString()
+
+1.前台：提供给用户浏览的
+
+   接口：
+   |
+   |-- <get> '/' 提供首页
+   |
+   |-- <get> '/p' 提供某一篇文章预览
+   |
+   |-- <post> '/submitComment' 用户提交评论
+
+2.后台： 提供给管理者管理数据
+   |
+   |-- <get> '/admin' 后台管理首页
+   |
+   |-- <get> '/admin/login' 管理员登录界面
+   |
+   |-- <post> '/admin/login' 登录接口
+   |
+   |-- <post> '/admin/uploadPage' 管理员提交文章
+   |
+   |--<get> '/admin/getComment' 获取评论
+   |
+   |--<get> '/admin/passComment' 通过评论
+   |
+   |--<get> '/admin/nopassComment' 驳回评论
